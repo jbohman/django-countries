@@ -7,6 +7,7 @@ Original Perl version by: John Gruber http://daringfireball.net/ 10 May 2008
 Python version by Stuart Colville http://muffinresearch.co.uk
 License: http://www.opensource.org/licenses/mit-license.php
 """
+from __future__ import print_function
 
 import sys
 import re
@@ -69,6 +70,6 @@ def titlecase(text):
 if __name__ == '__main__':
     if not sys.stdin.isatty():
         for line in sys.stdin:
-            print titlecase(line)
+            print(titlecase(line))
 
 
