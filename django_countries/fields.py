@@ -1,6 +1,18 @@
 from django.db.models.fields import CharField
-from django.utils.encoding import force_unicode, StrAndUnicode
 from django_countries import settings
+try:
+    from django.utils.encoding import force_unicode
+except ImportError:
+    from django.utils.encoding import force_text as force_unicode
+
+try:
+    from django.utils.encoding import StrAndUnicode
+except ImportError:
+    from django.utils.encoding import python_2_unicode_compatible
+    @python_2_unicode_compatible
+    class StrAndUnicode:
+        def __str__(self):
+            return self.code
 
 
 class Country(StrAndUnicode):
